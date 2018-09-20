@@ -1,0 +1,125 @@
+@font-face{
+	font-family:JosefinSans-R;
+	src:url("../fonts/JosefinSans-Regular.ttf")
+}
+@font-face{
+	font-family:JosefinSans-L;
+	src:url("../fonts/JosefinSans-Light.ttf")
+}
+@font-face{
+	font-family:JosefinSans-LI;
+	src:url("../fonts/JosefinSans-LightItalic.ttf")
+}
+@font-face{
+	font-family:JosefinSans-I;
+	src:url("../fonts/JosefinSans-Italic.ttf")
+}
+@font-face{
+	font-family:JosefinSans-T;
+	src:url("../fonts/JosefinSans-Thin.ttf")
+}
+@font-face{
+	font-family:JosefinSans-TI;
+	src:url("../fonts/JosefinSans-ThinItalic.ttf")
+}
+@font-face{
+	font-family:JosefinSans-B;
+	src:url("../fonts/JosefinSans-Bold.ttf")
+}
+@font-face{
+	font-family:JosefinSans-SB;
+	src:url("../fonts/JosefinSans-SemiBold.ttf")
+}
+@font-face{
+	font-family:JosefinSans-BI;
+	src:url("../fonts/JosefinSans-BoldItalic.ttf")
+}
+.navbar-default{
+	background-color:#00b0f0;
+	border:0px;
+	border-radius:0px;
+	margin-bottom:0px;
+}
+.navbar-default .navbar-brand{
+	color:#fff;
+}
+.navbar-default .navbar-nav li a{
+	color:#fff;
+	font-size:13px;
+	padding:15px 5px;
+	text-decoration:none;
+}
+.navbar-default .navbar-nav li a:hover{
+	color:#fff;
+}
+.login-box .log-box{
+	background-color:#d5d5d5;
+	padding:15px 30px;
+	display:inline-block;
+	width:100%;
+	margin-top:50px;
+	min-height:400px;
+	border-radius:15px;
+	border-bottom: 10px solid #00b0f0;
+	border-radius: 15px 15px 30px 30px;
+	margin-bottom:40px;
+}
+.login-box .log-box h1{
+	font-size:22px;
+	color:#000;
+	margin:20px 0px 20px;
+	text-align:center;
+}
+.login-box .log-box .form-group.mr-top{
+	margin-top:30px;
+}
+.login-box .log-box .form-group label{
+	font-size:13px;
+	font-weight:normal;
+}
+.login-box .log-box .form-group label img{
+	margin-bottom:7px;
+	margin-right:5px;
+}
+.coustom{
+	border-radius:0px;
+	height:40px;
+	border:1px solid #000;
+	font-size:14px;
+}
+.log-box p{
+	font-size:13px;
+	color:#000;
+	font-family:JosefinSans-R;
+}
+.last-btn{
+	display:inline-block;
+	width:100%;
+	text-align:center;
+}
+.last-btn p{
+	margin-bottom:15px;
+}
+.btn-custom{
+	padding:10px 15px;
+	width:150px;
+	background-color:#00b0f0;
+	border-radius:0px;
+	color:#fff;
+	border:1px solid transparent;
+	box-shadow:0px 0px 8px #777;
+	transition:ease 0.1s;
+}
+.btn-custom:hover{
+	border:1px solid #000;
+	background-color:#000;
+	color:#fff;
+}
+.error{
+color:#fff;
+}
+.error-box{
+background-color:red;
+padding: 6px;
+color: white;
+}
