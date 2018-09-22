@@ -123,3 +123,31 @@ background-color:red;
 padding: 6px;
 color: white;
 }
+
+.sub-main-w3 form {
+    max-width: 600px;
+    margin: 0 5vw;
+    background: rgba(10, 10, 10, 0.17);
+    padding: 3.5vw;
+    box-sizing: border-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-bottom: 8px solid #00B0F0;
+    border-radius: 30px 30px 50px 50px;
+    margin-left: 350px;
+    margin-top: 50px; 
+}
+.form-style-agile   {
+    width: 100%;
+    color: #000;
+    outline: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 15px 15px;
+    box-sizing: border-box;
+    border: none;
+    border: 1px solid #000;
+    background: #fff;
+}  
