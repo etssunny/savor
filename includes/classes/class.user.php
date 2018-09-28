@@ -33,6 +33,9 @@ class User
 	        return false;
 	    }   	 
 	}
+	/**
+	 * insert the db frome database
+	 */
 
 	public function insert($data)
 	{ 
@@ -45,7 +48,7 @@ class User
 		$signupDate = $data['signup_date']; 
 		$ip = $data['ip']; 
 		$userName = $this->makeUserName($email);  
-
+		 
 		$sql = $this->db->query("INSERT INTO `users` (`first_name`,`last_name`,`username`,`email`,`sex`,`password`,`signup_date`,`ip`,`verified`,`status`) VALUES ('$firstName','lastName','$userName','$email','$sex','$password','$signupDate','$ip',1,1)");
 
 		if ($sql)
@@ -58,6 +61,9 @@ class User
 		}
 	}
 
+	/*
+	 * Make the user name frome email
+	 */
 	private function makeUserName($email)
 	{
 		$userName = explode('@', $email)[0];
@@ -76,7 +82,9 @@ class User
 		} 
 		return $userName;
 	} 
-
+	/**
+	 * User verification 
+	 */
 	public function verification($id)
 	{
 		$result = $this->db->query("SELECT * FROM `users` 
@@ -92,7 +100,9 @@ class User
 			return true;
 		}
 	}
-
+	/**
+	 * Matches a user against email 
+	 */
 	public function emailCheck($email)
 	{
 		$emailResult = $this->db->query("SELECT email FROM `users` WHERE email = '$email' ");
@@ -105,9 +115,136 @@ class User
 			return $email;
 		}
 	} 
-	 
-}
+	/**
+	 * Forgot password in the user 
+	 */
+	public function forgotPassword($email)
+	{
 
+		$result = $this->db->query("SELECT * FROM `users` 
+									WHERE  
+									email = '$email' 
+									AND status = 1");
+		 
+		if($result->num_rows == 1)
+	    { 
+	    	return $result->fetch_object();
+	    }
+	    else
+	    {
+	        return false;
+	    } 
+	}
+	
+	/**
+	 * Update f_pass field in the database
+	 */
+	public function updateForgotPasswordLink($id,$link)
+	{
+		$result = $this->db->query("UPDATE `users` SET f_pass = '$link' WHERE id = '$id'");
+
+		if ($result == true) 
+		{
+		    return true;
+		} 
+		else 
+		{
+		    return false;
+		}
+	}
+
+	/**
+	*Match the user Forgot password in the Link
+	*/	
+	public function matchForgotPassword($link)
+	{
+		$result = $this->db->query("SELECT * FROM `users` WHERE  
+									f_pass = '$link' 
+									AND status = 1"); 
+		if($result->num_rows == 1)
+	    { 
+	    	return $result->fetch_object();
+	    }
+	    else
+	    {
+	        return false;
+	    }  
+	}
+
+	/**
+	* match the eCode frome the email table and fatch the user object data
+	*/
+	public function emailTemplate()
+	{
+		$result = $this->db->query("SELECT * FROM `emails` WHERE  
+									eCode = 'reset-password'");
+		if($result->num_rows == 1)
+	    { 
+	    	return $result->fetch_object();
+	    }
+	    else
+	    {
+	        return false;
+	    }  
+
+	}
+
+	/**
+	* Fetch the All data form config table
+	*/
+	public function fetchWebData()
+	{
+		$result = $this->db->query("SELECT * FROM `config` WHERE  
+									id = 1");
+		if($result->num_rows == 1)
+	    { 
+	    	return $result->fetch_object();
+	    }
+	    else
+	    {
+	        return false;
+	    }  
+
+	}
+
+	/**
+	* Check the user already Logged In
+	*/
+	public function userLoggedIn($id)
+	{
+		$result = $this->db->query("SELECT * FROM `config` WHERE  
+									id = '$id'
+									AND status = 1");
+		if($result->num_rows == 1)
+	    { 
+	    	return true;
+	    }
+	    else
+	    {
+	        return false;
+	    }  
+	}
+
+	/**
+	* Store Updated password in the user table
+	*/
+	public function resetUpdtedPassword($userId, $password)
+	{
+		$result = $this->db->query("UPDATE `users` 
+									SET 
+									password = '$password',
+									f_pass = ''
+									WHERE id = '$userId'"); 
+		if($result)
+	    { 
+	    	return  true;
+	    }
+	    else
+	    {
+	        return false;
+	    }
+	} 
+}
 
 /*
 End class User
