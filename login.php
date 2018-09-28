@@ -2,20 +2,23 @@
 include 'header.php';
 include 'includes/config.php';
 include 'includes/classes/class.user.php';
-include 'footer.php'; 
+
 $userObj = new User($config['db']); 
 if(isset($_POST["login"]))
 {
     $email = $config['db']->real_escape_string($_POST['email']); 
     $password = md5($_POST['password']);  
-    $user = $userObj->fetchUserByCredential($email, $password);  
+    $user = $userObj->fetchUserByCredential($email, $password);   
+    
     if($user)
     {
         $_SESSION['Savor'] = $user;
-
-        if($user->verified == 1) {
+        if($user->verified == 1) 
+        {
             header('location: step-1.php');
-        } else {
+        } 
+        else 
+        {
             header('location: verify-email.php');
         }
     }   
@@ -46,18 +49,18 @@ if(isset($_POST["login"]))
                     <div class="form-group">
                         <label><img src="img/lock.png">Password</label>
                         <input type="password" name="password" class="form-control coustom" placeholder="Password" required="">
-                    </div>
-                    
-                    <p>Don't have an account</p>
+                    </div> 
+                    <a href="signup.php"><p>Don't have an account</p></a>
                     <div class="last-btn">
                         <p><button class="btn btn-primary btn-custom" type="login" name="login">login</button> </p> 
-                        <p><a href="#" class="btn btn-primary btn-custom">Forgot Password?</a></p>
+                        <p><a href="forgot_enter_email.php" class="btn btn-primary btn-custom">Forgot Password?</a></p>
                     </div>
                 </div>
                 </form>
             </div>
         </div>
     </div>
-</div> 
-<script src="js/wow.js"></script>
+</div>  
+
+<?php include 'footer.php'; ?>
     
